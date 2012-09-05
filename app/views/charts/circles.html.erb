@@ -1,0 +1,50 @@
+ <script type="text/javascript">
+ 
+		// define dimensions of graph
+		var m = [80, 80, 80, 80]; // margins
+		var w = 1000 - m[1] - m[3]; // width
+		var h = 400 - m[0] - m[2]; // height
+
+ var questions = [];
+        $.each(stats.questions, function(index, value) {
+          questions.push([value.question, value.time * 10,  80]);
+        });
+
+       
+	// var questions = [
+	// 						[5, 20], [480, 90], [250, 50], [100, 33], [330, 95],
+	// 						[410, 12], [475, 44], [25, 67], [85, 21], [220, 88]
+	// 					  ];
+	
+ console.log(questions);
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			svg.selectAll("circle")
+			   .data(questions)
+			   .enter()
+			   .append("circle")
+			   .attr("cx", function(d) {
+			   		return d[1];
+			   })
+			   .attr("cy", function(d) {
+			   		return d[2];
+			   })
+			   .attr("r", 5);
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
