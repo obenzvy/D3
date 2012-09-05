@@ -1,11 +1,7 @@
 D3::Application.routes.draw do
   resources :charts
 
-  get "scatterplot" => "Charts#scatter", :as => :scatterplot
-  get "linechart" => "Charts#line_chart", :as => :linechart
-  get "circles" => "Charts#circles", :as => :circles
-  get "mousing" => "Charts#mousing", :as => :mousing
-  get "final" => "Charts#final", :as => :final
+
 
 
   # The priority is based upon order of creation:
