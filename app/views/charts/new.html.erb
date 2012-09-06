@@ -5,16 +5,14 @@
 <style>
 /* tell the SVG path to be a thin blue line without any area fill */
 path {
-	stroke: steelblue;
-	stroke-width: 1;
-	fill: none;
+	stroke: #0071BC;
+	stroke-width: 5;
+	fill: #B5E5F7;
 }
 
-triangle {
-	stroke: steelblue;
-	stroke-width: 1;
-	fill: none;
-}	
+.area {
+  fill: black;
+}
 
 .axis {
 	shape-rendering: crispEdges;
@@ -26,16 +24,19 @@ triangle {
 
 .x.axis .minor {
 	stroke-opacity: .5;
+  stroke-width: 1;
 }
 
 .x.axis line, .x.axis path {
 	fill: none;
 	stroke: #000;
+  stroke-width: 1;
 }
 
 .y.axis line, .y.axis path {
 	fill: none;
 	stroke: #000;
+  stroke-width: 1;
 }
 </style>
 
@@ -139,6 +140,7 @@ triangle {
 			})
 
 
+
 			// Add an SVG element with the desired dimensions and margin.
 			var graph = d3.select("#graph").append("svg:svg")
 			.attr("width", w + m[1] + m[3])
@@ -176,7 +178,10 @@ triangle {
 
   			// Add the line by appending an svg:path element with the comprehension_percentage line we created above
 			// do this AFTER the axes above so that the line is above the tick-lines
-			graph.append("svg:path").attr("d", line(comprehension_percentage));
+			graph.append("svg:path").attr("d", line(comprehension_percentage))
+    
+
+
 			console.log('outputting contents of graph variable')
 			console.log(graph);
 
@@ -199,10 +204,10 @@ triangle {
 
   			// graph.append("svg:path").data(ahas).attr("d", d3.svg.symbol().type("triangle-up"));
 
-  		triangle = graph.selectAll(".point")
+  		triangle = graph.selectAll(".triangle")
   			.data(ahas)
   			.enter().append("path")
-  			.attr("class", "point")
+  			// .attr("class", "point")
   			.attr("d", d3.svg.symbol().type("triangle-down").size(500))
   			.attr("transform", function(d) { return "translate(" + x(d) + "," + 30 + ")"; })
   			.text("hello");
